@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using MongoDB.Driver.Linq;
 using SocialMedia.Domain.Entities;
 using SocialMedia.Infrastructure.Interface;
 using System;
@@ -33,7 +34,7 @@ namespace SocialMedia.Infrastructure
             var token = new JwtSecurityToken(_configuration["JwtSettings:Issuer"],
               _configuration["JwtSettings:Audience"],
               claims,
-              expires: DateTime.Now.AddMinutes(15),
+              expires: DateTime.Now.AddMinutes(double.Parse(_configuration["JwtSettings:ExpiryMinutes"])),
               signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:Secret"])), SecurityAlgorithms.HmacSha256));
 
             return new JwtSecurityTokenHandler().WriteToken(token);
