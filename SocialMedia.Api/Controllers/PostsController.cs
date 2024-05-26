@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using SocialMedia.Api.DTO;
+using SocialMedia.Application.Queries;
 using SocialMedia.Application.Request;
 using System.Security.Claims;
 
@@ -32,7 +33,7 @@ namespace SocialMedia.Api.Controllers
             };
             
             var postId = await _mediator.Send(command);
-            return Ok(new { PostId = postId });
+            return CreatedAtAction(nameof(GetFeed),new { PostId = postId });
         }
 
         [HttpPost("likePost")]

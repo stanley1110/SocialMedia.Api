@@ -22,7 +22,7 @@ namespace SocialMedia.Api.Controllers
         public async Task<IActionResult> Register(RegisterUserCommand command)
         {
             var userId = await _mediator.Send(command);
-            return Ok(new { UserId = userId });
+            return CreatedAtAction(nameof(Login),new { UserId = userId });
         }
 
         [AllowAnonymous]

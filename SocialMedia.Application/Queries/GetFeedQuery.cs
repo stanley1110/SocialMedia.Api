@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SocialMedia.Application.Request
+namespace SocialMedia.Application.Queries
 {
     public class GetFeedQuery : IRequest<List<Post>>
     {

@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.Extensions.Caching.Memory;
 using SocialMedia.Application.Exceptions;
 using SocialMedia.Application.Interface;
-using SocialMedia.Application.Request;
+using SocialMedia.Application.Queries;
 using SocialMedia.Domain.Entities;
 using System;
 using System.Collections.Generic;
